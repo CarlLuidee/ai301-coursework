@@ -18,6 +18,8 @@ wrong label is not graded.
 [The individual Path Review issue page. A link to the repository or the issue list
 does not satisfy this field.]
 
+https://github.com/codepath/pathreview-ai301-fa26-s1/issues/1
+
 **Verdict output**
 
 [Your skill's live-mode output for this issue, pasted verbatim and ending with the
@@ -30,7 +32,17 @@ partial re-run costs about $0.20 — or run the skill on different candidates. O
 recording `reject` for the issue you chose earns no credit for this field.
 
 ```
-paste the output here, including the closing JSON block
+All three are in scope (codepath/pathreview-ai301-fa26-s1). Evidence gathered live from the GitHub API on 2026-09-20.
+
+Shared repo facts: not archived; last push 2026-09-16 (4 days ago); all 5 most recent main commits authored by a human, Aburke225 (Collaborator); repo is 410 KB Python; docs/CONTRIBUTING.md and the PR template state CI/test/xfail requirements but say nothing restricting AI assistance; the repo has zero pull requests of any state.
+
+Ranked read-out — all three accepted
+
+1. #1 — Duplicate embeddings on re-ingest (best fit): a Python bug with the root cause already named (_check_skip() passes the string "IngestedSource" to db_session.query() instead of the model class), and the fix requires reading across ingestion/pipeline.py and core/models/ingested_source.py — exactly the multi-file-codebase analysis you want practice at, at a bounded 4–6 hour size.
+2. #4 — Parse GitHub Actions workflows for CI/CD skills: also multi-file Python (new ingestion/parsers/workflow_parser.py plus skill_extractor.py) and leans on your Docker/CI familiarity, but it is the largest and least prescribed of the three (6–10 hours, tier-3, skill list given only by example).
+3. #6 — Hybrid retriever keyword indexing / BM25 normalization: crisply specified and Python, but confined to one file (rag/retriever/hybrid.py) and the most domain-specific (BM25 scoring), so it exercises the multi-file skill you named least.
+
+Per-check: active maintainer passes for all three on condition (a). within scope passes for all three — #1 and #6 are bug reports with stated root causes, #4 is a feature whose approach, new file, and integration point are already named with no TBDs or debate in the thread. not already claimed passes for all three — no assignees, no linked PRs, no comments at all. contribution policy (preferred) passes for all three by silence.
 ```
 
 ---
